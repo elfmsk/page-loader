@@ -9,7 +9,9 @@ const downloadFile = (url, pathBase) => {
   const pathForFile = path.resolve(pathBase, fileName);
   return axios.get(url)
     .then(response => fs.writeFile(pathForFile, response.data, 'utf8'))
-    .catch(error => console.log(error));
+    .catch((error) => {
+      throw error;
+    });
 };
 
 export default downloadFile;
