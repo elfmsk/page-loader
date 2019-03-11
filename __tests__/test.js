@@ -4,8 +4,6 @@ import os from 'os';
 import { promises as fs } from 'fs';
 import downloadFile from '../src';
 
-const fsExtra = require('fs-extra');
-
 const pathToExpectedFile = path.resolve(__dirname, '__fixtures__/hexlet-io-courses.html');
 
 let timeDir;
@@ -24,8 +22,4 @@ test('downloadFile', async () => {
   const result = await fs.readFile(`${timeDir}/hexlet-io-courses.html`, 'utf8');
 
   expect(expected).toEqual(result);
-});
-
-afterAll(async () => {
-  await fsExtra.remove(timeDir);
 });
