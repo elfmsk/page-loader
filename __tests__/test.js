@@ -23,7 +23,7 @@ test('downloadFile', async () => {
   const expected = await fs.readFile(pathToExpectedFile, 'utf8');
   const result = await fs.readFile(`${timeDir}/hexlet-io-courses.html`, 'utf8');
 
-  expect(expected === result).toBe(true);
+  expect(expected).toEqual(result);
 });
 
 afterAll(async () => {

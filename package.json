@@ -6,9 +6,6 @@
   "bin": {
     "page-loader": "dist/bin/page-loader.js"
   },
-  "engines": {
-    "node": ">=8"
-  },
   "files": [
     "dist"
   ],
