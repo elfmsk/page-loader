@@ -1,0 +1,68 @@
+{
+  "name": "elfmsk-third-project",
+  "version": "0.0.11",
+  "description": "third project from hexlet",
+  "main": "index.js",
+  "bin": {
+    "page-loader": "dist/bin/page-loader.js"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "jest",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "watch": "jest --watch *.js",
+    "babel-node": "babel-node",
+    "prepublishOnly": "npm run build",
+    "eslint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elfmsk/project-lvl3-s418.git"
+  },
+  "author": "elfmsk",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "homepage": "",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "commander": "^2.19.0",
+    "fs-extra": "^7.0.1",
+    "gulp": "^4.0.0",
+    "lodash": "^4.17.11",
+    "nock": "^10.0.6",
+    "source-map-support": "^0.5.9"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-core": "^7.0.0-0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "debug": "^4.0.1",
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-babel": "^5.2.1",
+    "eslint-plugin-flowtype": "^3.1.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.26.2",
+    "eslint-plugin-lodash-fp": "^2.2.0-a1",
+    "flow-bin": "^0.84",
+    "flow-typed": "^2.5.1",
+    "gulp-babel": "^8.0.0",
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0"
+  }
+}
