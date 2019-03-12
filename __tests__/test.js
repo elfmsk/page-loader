@@ -13,36 +13,36 @@ beforeAll(async () => {
   timeDir = await fs.mkdtemp(path.join(__dirname, os.tmpdir()));
 });
 
-test('downloadFile', async () => {
-  nock('https://sitesedona.github.io')
-    .get('/')
-    .replyWithFile(200, pathToExpectedFile);
-
-  await downloadFiles('https://sitesedona.github.io', timeDir);
-
-  const expected = await fs.readFile(pathToExpectedFile, 'utf8');
-  const result = await fs.readFile(`${timeDir}/sitesedona-github-io.html`, 'utf8');
-
-  expect(expected).toEqual(result);
-});
-
-afterAll(async () => {
-  // await fsExtra.remove(timeDir);
-});
-
 // test('downloadFile', async () => {
-//   // nock('https://sitesedona.github.io')
-//   //   .get('/courses')
-//   //   .replyWithFile(200, pathToExpectedFile);
+//   nock('https://sitesedona.github.io')
+//     .get('/')
+//     .replyWithFile(200, pathToExpectedFile);
 //
 //   await downloadFiles('https://sitesedona.github.io', timeDir);
 //
-//   // const expected = await fs.readFile(pathToExpectedFile, 'utf8');
-//   // const result = await fs.readFile(`${timeDir}/hexlet-io-courses.html`, 'utf8');
+//   const expected = await fs.readFile(pathToExpectedFile, 'utf8');
+//   const result = await fs.readFile(`${timeDir}/sitesedona-github-io.html`, 'utf8');
 //
-//   // expect(expected).toEqual(result);
+//   expect(expected).toEqual(result);
 // });
 //
 // afterAll(async () => {
 //   // await fsExtra.remove(timeDir);
 // });
+
+test('downloadFile', async () => {
+  // nock('https://sitesedona.github.io')
+  //   .get('/courses')
+  //   .replyWithFile(200, pathToExpectedFile);
+
+  await downloadFiles('https://sitesedona.github.io', timeDir);
+
+  // const expected = await fs.readFile(pathToExpectedFile, 'utf8');
+  // const result = await fs.readFile(`${timeDir}/hexlet-io-courses.html`, 'utf8');
+
+  // expect(expected).toEqual(result);
+});
+
+afterAll(async () => {
+  // await fsExtra.remove(timeDir);
+});

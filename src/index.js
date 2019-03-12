@@ -6,44 +6,46 @@ import { promises as fs } from 'fs';
 import _ from 'lodash/fp';
 
 
-const loadingFile = (url, pathForFile) => axios.get(url)
+const loadingFile = (urlLoc, pathForFile) => axios.get(urlLoc)
   .then(response => fs.writeFile(pathForFile, response.data, 'utf8'))
   .then(() => fs.readFile(pathForFile, 'utf-8'))
   .then(data => data);
 
-const loadingResources = (resources, pathForResources) => {
-    fsPromises.mkdir(pathForResources).
-    then(n => console.log(n));
-}
+const loadingResources = (urlLoc, resources, pathForResources) => {
+  const urlArr = _.keys(resources).filter(n => resources[n].length !== 0)
+    .reduce((acc, e) => [...acc, ...resources[e].map(tail => new URL(tail, urlLoc).href)], []);
+  console.log(urlArr);
+
+  return fs.mkdir(pathForResources)
+    .then(() => urlArr.forEach(n => console.log(n)))
+    .catch(error => console.log(error));
+};
 
 const findResources = (html) => {
   const $ = cheerio.load(html);
-  const linksArr = $('link').map((i, el) => {
-    return $(el).attr('href');
-  }).get().filter(u => url.parse(u).protocol === null);
-  const scriptsArr = $('script').map((i, el) => {
-    return $(el).attr('src');
-  }).get().filter(u => url.parse(u).protocol === null);
-  const imagesArr = $('img').map((i, el) => {
-    return $(el).attr('src');
-  }).get().filter(u => url.parse(u).protocol === null);
+  const linksArr = $('link').map((i, el) => $(el).attr('href'))
+    .get().filter(u => url.parse(u).protocol === null);
+  const scriptsArr = $('script').map((i, el) => $(el).attr('src'))
+    .get().filter(u => url.parse(u).protocol === null);
+  const imagesArr = $('img').map((i, el) => $(el).attr('src'))
+    .get().filter(u => url.parse(u).protocol === null);
 
   return {
-    'links': linksArr,
-    'scripts': scriptsArr,
-    'images': imagesArr
-  }
+    links: linksArr,
+    scripts: scriptsArr,
+    images: imagesArr,
+  };
 };
 
-const downloadFiles = (url, pathBase) => {
-  const fileName = `${_.kebabCase(url.split('//').slice(1).join(''))}.html`;
+const downloadFiles = (urlLoc, pathBase) => {
+  const fileName = `${_.kebabCase(urlLoc.split('//').slice(1).join(''))}.html`;
   const pathForFile = path.resolve(pathBase, fileName);
-  const dirName = `${_.kebabCase(url.split('//').slice(1).join(''))}_files`;
+  const dirName = `${_.kebabCase(urlLoc.split('//').slice(1).join(''))}_files`;
   const pathForResources = path.resolve(pathBase, dirName);
 
-  loadingFile(url, pathForFile)
-  .then(html => findResources(html))
-  .then(resources => loadingResources(resources, pathForResources))
+  loadingFile(urlLoc, pathForFile)
+    .then(html => findResources(html))
+    .then(resources => loadingResources(urlLoc, resources, pathForResources));
 };
 
 export default downloadFiles;
