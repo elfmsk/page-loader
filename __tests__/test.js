@@ -2,9 +2,11 @@ import path from 'path';
 import nock from 'nock';
 import os from 'os';
 import { promises as fs } from 'fs';
-import downloadFile from '../src';
+import downloadFiles from '../src';
 
-const pathToExpectedFile = path.resolve(__dirname, '__fixtures__/hexlet-io-courses.html');
+const fsExtra = require('fs-extra');
+
+const pathToExpectedFile = path.resolve(__dirname, '__fixtures__/sitesedona-github-io.html');
 
 let timeDir;
 beforeAll(async () => {
@@ -12,14 +14,35 @@ beforeAll(async () => {
 });
 
 test('downloadFile', async () => {
-  nock('http://hexlet.io')
-    .get('/courses')
+  nock('https://sitesedona.github.io')
+    .get('/')
     .replyWithFile(200, pathToExpectedFile);
 
-  await downloadFile('http://hexlet.io/courses', timeDir);
+  await downloadFiles('https://sitesedona.github.io', timeDir);
 
   const expected = await fs.readFile(pathToExpectedFile, 'utf8');
-  const result = await fs.readFile(`${timeDir}/hexlet-io-courses.html`, 'utf8');
+  const result = await fs.readFile(`${timeDir}/sitesedona-github-io.html`, 'utf8');
 
   expect(expected).toEqual(result);
 });
+
+afterAll(async () => {
+  // await fsExtra.remove(timeDir);
+});
+
+// test('downloadFile', async () => {
+//   // nock('https://sitesedona.github.io')
+//   //   .get('/courses')
+//   //   .replyWithFile(200, pathToExpectedFile);
+//
+//   await downloadFiles('https://sitesedona.github.io', timeDir);
+//
+//   // const expected = await fs.readFile(pathToExpectedFile, 'utf8');
+//   // const result = await fs.readFile(`${timeDir}/hexlet-io-courses.html`, 'utf8');
+//
+//   // expect(expected).toEqual(result);
+// });
+//
+// afterAll(async () => {
+//   // await fsExtra.remove(timeDir);
+// });
