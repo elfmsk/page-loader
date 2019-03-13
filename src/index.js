@@ -5,7 +5,7 @@ import axios from 'axios';
 import { promises as fs } from 'fs';
 import _ from 'lodash/fp';
 
-import findResources from './findResources';
+import { findResources, changeHtml } from './processesForHtml';
 
 
 const downloadFile = (urlLoc, pathForFile) => axios.get(urlLoc)
@@ -34,10 +34,14 @@ const downloadPage = (urlLoc, pathBase) => {
   const pathForFile = path.resolve(pathBase, fileName);
   const dirName = `${_.kebabCase(urlLoc.split('//').slice(1).join(''))}_files`;
   const pathForResources = path.resolve(pathBase, dirName);
-
+  let newHtml;
   downloadFile(urlLoc, pathForFile)
-    .then(html => findResources(html))
-    .then(resources => downloadResources(urlLoc, resources, pathForResources));
+    .then((html) => {
+      newHtml = changeHtml(html, dirName);
+      return findResources(html);
+    })
+    .then(resources => downloadResources(urlLoc, resources, pathForResources))
+    .then(() => fs.writeFile(pathForFile, newHtml, 'utf8'));
 };
 
 export default downloadPage;
