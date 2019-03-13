@@ -9,16 +9,18 @@ import _ from 'lodash/fp';
 const loadingFile = (urlLoc, pathForFile) => axios.get(urlLoc)
   .then(response => fs.writeFile(pathForFile, response.data, 'utf8'))
   .then(() => fs.readFile(pathForFile, 'utf-8'))
-  .then(data => data);
+  .then(data => data)
 
 const loadingResources = (urlLoc, resources, pathForResources) => {
-  const urlArr = _.keys(resources).filter(n => resources[n].length !== 0)
-    .reduce((acc, e) => [...acc, ...resources[e].map(tail => new URL(tail, urlLoc).href)], []);
-  console.log(urlArr);
-
+  const urlAndResourceName = _.keys(resources).filter(n => resources[n].length !== 0)
+    .reduce((acc, e) => [...acc, ...resources[e].map(tail => {
+      return {
+        urlPath: new URL(tail, urlLoc).href,
+        resourceName: path.resolve(pathForResources, tail.split('/').splice(-1).join(''))
+      };
+    })], []);
   return fs.mkdir(pathForResources)
-    .then(() => urlArr.forEach(n => console.log(n)))
-    .catch(error => console.log(error));
+    .then(() => urlAndResourceName.map(actualUrl => loadingFile(actualUrl.urlPath, actualUrl.resourceName)))
 };
 
 const findResources = (html) => {

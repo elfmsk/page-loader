@@ -27,7 +27,7 @@ beforeAll(async () => {
 // });
 //
 // afterAll(async () => {
-//   // await fsExtra.remove(timeDir);
+//   await fsExtra.remove(timeDir);
 // });
 
 test('downloadFile', async () => {
@@ -36,7 +36,6 @@ test('downloadFile', async () => {
   //   .replyWithFile(200, pathToExpectedFile);
 
   await downloadFiles('https://sitesedona.github.io', timeDir);
-
   // const expected = await fs.readFile(pathToExpectedFile, 'utf8');
   // const result = await fs.readFile(`${timeDir}/hexlet-io-courses.html`, 'utf8');
 
@@ -44,5 +43,5 @@ test('downloadFile', async () => {
 });
 
 afterAll(async () => {
-  // await fsExtra.remove(timeDir);
+  await setTimeout(fsExtra.remove, 20000, timeDir);
 });
