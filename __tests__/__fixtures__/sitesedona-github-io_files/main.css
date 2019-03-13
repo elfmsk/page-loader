@@ -1,0 +1,995 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 21px;
+    font-family: "PT Sans", sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    color: #333;
+    min-width: 1220px;
+    background: #f2f2f2;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    background: #fff;
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 21px;
+    line-height: 26px;
+    font-weight: 700;
+    color: #000;
+}
+
+h2 + p {
+    padding-top: 12px;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.logo {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 2000;
+    margin-left:-69px
+}
+
+nav ul {
+    margin: 0;
+    padding: 0 75px;
+    list-style: none;
+}
+
+nav li {
+    display: block;
+    min-width: 240px;
+    padding: 15px 0;
+    
+    font-size: 14px;
+    line-height: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    
+    vertical-align: top;
+}
+
+nav li:nth-child(1), nav li:nth-child(2) {
+    float: left;
+    text-align: left;
+}
+
+nav li:nth-child(3), nav li:nth-child(4) {
+    float: right;
+    text-align: right;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000;
+}
+
+nav a.active {
+    cursor: default;
+    color: #766357;
+}
+
+nav a:hover {
+    color: #81b3d2;
+}
+
+nav a:active {
+    color: #000;
+    opacity: 0.3;
+}
+
+.cover {
+    background-color: #81b3d2;
+    background-image: url(../img/bg-poster-mask.png), url(../img/cover.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom, top;
+
+    padding: 75px 0;
+    margin-bottom: 60px;
+}
+
+.cover img {
+    display:block;
+    margin: 0 auto;
+    width: 458px;
+    height: 352px;
+}
+
+p.distance {
+    margin-bottom: 55px;
+}
+
+.promo-tape {
+    background-color: #81b3d2;
+    background-repeat: no-repeat;
+    min-height: 256px;
+}
+
+.promo-tape-1 {
+    background-image: url(../img/tape-1.jpg);
+    background-position: right;
+}
+
+.promo-tape-2 {
+    background-image: url(../img/tape-2.jpg);
+    background-position: left;
+}
+
+.promo-text {
+    width: 290px;
+    padding: 35px 55px 0;
+    color: #fff;
+}
+
+.promo-text-1 {
+    float: left;
+}
+
+.promo-text-2 {
+    float: right;
+}
+
+.promo-text h2 {
+    color: #fff;
+    line-height: 21px;
+}
+
+span.line {
+    position: relative;
+    z-index:2;
+
+    display: inline-block;
+    margin: 0;
+    padding: 5px;
+}
+
+span.line:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 10px;
+    height: 2px;
+    background-color: #fff;
+
+    position: relative;
+    top: -2px;
+    left: -5px;
+}
+
+span.line:after {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 10px;
+    height: 2px;
+    background-color: #fff;
+
+    position: relative;
+    top: -2px;
+    left: 5px;
+}
+
+span.line-black:before,
+span.line-black:after {
+    background-color: #000;
+}
+
+.features {
+    padding: 60px 75px 60px;
+}
+
+.features-2 {
+    padding: 30px 75px 40px;
+    background-color: #eee;
+    margin-bottom: 60px;
+}
+
+.block {
+    float: left;
+    width: 290px;
+    margin-right: 90px;
+}
+
+.block:last-child {
+    margin-right: 0;
+}
+
+.icon {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-image: url(../img/features-icons-sprite.png);
+}
+
+.feature-home {
+    background-position: 0 -304px;
+}
+
+.feature-food {
+    background-position: 0 0;
+}
+
+.feature-souvenir {
+    background-position: 0 -152px;
+}
+
+.promo-title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+footer {
+    padding: 35px 75px;
+}
+
+.main-footer {
+    position: relative;
+    z-index: 10;
+    margin-top: -120px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.btn {
+    display: inline-block;
+    vertical-align: top;
+    
+    font-size: 21px;
+    font-family: "PT Sans", sans-serif;
+    font-weight: 700;
+    line-height: 26px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+
+    color: #fff;
+    background: #8dbad6;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #669ec0;
+}
+
+.btn:active {
+    background-color: #5496bd;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.social-button {
+    width: 46px;
+    height: 48px;
+    margin-right: 6px;
+    background: #8dbad6 url(../img/social.png) no-repeat center;
+}
+
+.social-button:last-child {
+    margin-right: 0;
+}
+
+.twitter {
+    background-position: 0 0;
+}
+
+.youtube {
+    background-position: -103px 0;
+}
+
+.hashtag {
+    padding: 11px 0;
+    font-size: 21px;
+    line-height: 26px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #000;
+}
+
+.copyright span {
+    display: inline-block;
+    vertical-align: top; 
+    padding: 11px 0;
+    font-size: 14px;
+    line-height: 26px;
+    font-family: "PT Sans";
+    font-weight: 400;
+    text-transform: uppercase;
+    text-decoration: underline;
+    color: #000;
+}
+
+.htmlacademy {
+    display: inline-block;
+    width: 122px;
+    height: 48px;
+    background: url(../img/htmlacademy.png) no-repeat;
+    background-position: 0px 0px;
+}
+
+.htmlacademy:hover {
+    background-position: 0px -58px;
+}
+
+.htmlacademy:active {
+    background-position: 0px -116px;
+}
+
+/* Всплывающая форма */
+
+.search-hotels {
+    position: relative;
+    width: 575px;
+    margin: 0 auto;
+}
+
+.search-hotels-title {
+    cursor: pointer;
+    padding: 12px 0;
+    text-align: center;
+    background-color: #766357;
+}
+
+.search-hotels-title h2 {
+    cursor: pointer;
+    color: #fff;
+    padding: 0;
+}
+
+.modal-window {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 465px;
+    padding: 55px 55px 55px;
+    margin-top: 85px;
+
+    color: #000;
+    font-weight: 700;
+    text-align: left;
+    background-color: #fff;
+    box-shadow: 0 10px 10px 5px rgba(0,0,0,.1);
+}
+
+.modal-window-show {
+    display: block;
+}
+
+.modal-window input {
+    height: 35px;
+    padding: 0 15px;
+    background-color: #f2f2f2;
+    border: solid 2px #f2f2f2;  
+    font-family: "PT Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.modal-window input:hover {
+    background-color: #ebebeb;
+    border: solid 2px #ebebeb;
+}
+
+.modal-window input[type="number"]:focus,
+.modal-window input[type="date"]:focus {
+    background-color: #fff;
+    border: solid 2px #e5e5e5;
+}
+
+.modal-window input[type="date"] {
+    width: 312px;
+    margin-bottom: 30px;
+}
+
+.modal-window input[type="number"] {
+    width: 84px;
+    margin-bottom: 55px;
+}
+
+.modal-window label[for="children"] {
+    width: 78px;
+    text-align: right;
+    padding-right: 25px;
+}
+
+.modal-window label {
+    display: inline-block;
+    width: 110px;
+}
+
+.modal-window input[type="submit"] {
+    width: 460px;
+    height: 58px;
+    background: #8dbad6;
+}
+
+.modal-window input[type="submit"]:hover {
+    background-color: #669ec0;
+}
+
+.modal-window input[type="submit"]:active {
+    background-color: #5496bd;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* style for hotels */
+
+.cover-inner {
+    width: 100%;
+    min-height: 216px;
+    margin-bottom: 30px;
+    background-color: #8dbad6;
+    background-image: url(../img/bg-hotels-filters.jpg);
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+.checkboxes {
+    float: left;
+    width: 170px;
+    padding-left: 75px; 
+    text-align: left;
+}
+
+/* Сложный фильтр цены */
+
+.range-filter {
+    float: right;
+    padding-right: 75px; 
+    text-align: left;
+}
+
+legend {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.checkboxes input[type=checkbox] {
+    display: none;
+}
+
+fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.checkboxes label {
+    display: block;
+
+    position: relative;
+    padding-left: 44px;
+
+    margin-bottom: 25px;
+    
+    color: #fff;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.checkboxes label::before {
+    content: "";
+    display: inline-block;
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 22px;
+    height: 22px;
+
+    border: solid #fff 2px;
+    border-radius: 4px;
+}
+
+.checkboxes input[type=checkbox]:checked + label::before {
+    content: "\2714";
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.checkboxes input[type="checkbox"]:disabled + label::before {
+    border-color: #6a6a6a;
+    opacity: 0.6;
+}
+
+.checkboxes input[type="checkbox"]:checked:disabled + label::before {
+    color: #6a6a6a;
+    opacity: 0.6;
+}
+
+.price-controls {
+    border: solid #fff 2px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+input.min-price, input.max-price {
+    display: inline-block;
+    width: 140px;
+    padding: 7px;
+    background-color: inherit;
+    border: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    line-height: 21px;
+    font-family: "PT Sans", sans-serif;
+    text-transform: uppercase;
+}
+
+input.min-price {
+    border-right: solid 2px #fff;
+}
+
+.range-filter input.form-btn {
+    width: 140px;
+    margin-left: 89px;
+    padding: 7px;
+    border: solid #fff 2px;
+    border-radius: 4px;
+    color: #fff;
+    background-color: inherit;
+    font-size: 14px;
+    line-height: 21px;
+    font-family: "PT Sans", sans-serif;
+    text-transform: uppercase;
+}
+
+.range-filter input.form-btn:hover {
+    color: #000;
+    background-color: #fff;
+    transition: 0.5s;
+}
+
+.range-controls {
+    position: relative;
+    width: 100%;
+    height: 24px;
+    margin-bottom: 10px;
+}
+
+.range-controls .scale{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin-top: -1px;
+    height: 2px;
+    background: #fff;
+}
+
+.range-controls .bar{
+    height: 2px;
+    background: #6a6a6a;
+    opacity: 0.6;
+}
+
+.range-controls .toggle{
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 4px;
+    border: 8px solid #fff;
+    background: #ababab;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 2px 1px 0 #cfcfcf;
+}
+
+.range-controls .toggle:hover {
+    background: #1c4f80;
+}
+
+.range-controls .min-toggle{
+    left: 0;
+}
+.range-controls .max-toggle{
+    left: 75%;
+}
+
+/* style for hotels continue */
+
+.sorting {
+    padding-left: 75px;
+    padding-bottom: 30px;
+    border-bottom: solid 2px #e5e5e5;
+    text-align: left;
+}
+
+.sorting span {
+    padding-right: 40px;
+}
+
+.sorting span a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+/* Здесь странное. Если указать font-family: "PT Sans" шрифт отображается Times New Roman */
+.sorting span:first-child {
+    padding-right: 50px;
+    font-size: 21px;
+    line-height: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.sorting span:nth-child(2) {
+    font-size: 12px;
+    line-height: 18px;
+    color: #000;
+}
+
+.picked {
+    color: #81b3d2;
+}
+
+.sort-by {
+    color: #000;
+    opacity: 0.7;
+    border-bottom: dotted 2px #81b3d2;
+}
+
+.arrow {
+    display: inline-block;
+    float: right;
+    padding-right: 75px;
+}
+
+.arrow-up {
+    position: relative;
+    margin-right: 15px;
+    top: -12px;
+    border: 8px solid transparent; /* Прозрачные границы */
+    border-bottom: 12px solid #cccccc; /* Добавляем треугольник */
+}
+
+.arrow-up:hover {
+    border-bottom-color: #000;
+    transition: 0.5s;
+}
+
+.arrow-down {
+    position: relative;
+    top: 12px;
+    border: 8px solid transparent; /* Прозрачные границы */
+    border-top: 12px solid #81b3d2; /* Добавляем треугольник */
+}
+
+.abode {
+    padding: 25px 75px 30px;
+    border-bottom: solid 2px #e5e5e5;    
+}
+
+.abode img {
+    float: left;
+    width: 135px;
+    height: 90px;
+    margin-top: 5px;
+    margin-right: 30px;
+}
+
+.ihformation {
+    float: left;
+    text-align: left;
+    padding: 0;
+}
+
+.ihformation h2 {
+    padding: 0 0 8px;
+    margin: 0;
+}
+
+.adobe-name {
+    display: inline-block;
+    min-width: 116px;
+    padding-bottom: 12px;
+}
+
+.more, .booking {
+    padding: 3px 10px;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 700;
+}
+
+button.booking {
+    background-color: #766357;
+}
+
+button.booking:hover {
+    background-color: #604e43;
+}
+
+button.booking:active {
+    background-color: #503e33;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.star-rating {
+    float: right;
+}
+
+.stars {
+    text-align: right;
+}
+
+.star {
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    margin-left: 5px;
+    margin-bottom: 45px;
+    background-image: url(../img/star.png);
+}
+
+.rating {
+    margin: 0;
+    padding: 4px;
+    width: 110px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: #666;
+    text-decoration: none;
+    text-align: center;
+    background-color: #f2f2f2
+}
+
+/* styles for info */
+
+
+.cover-info {
+    background-color: #81b3d2;
+    background-image: url(../img/bg-poster-mask.png), url(../img/cover-inner.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom, top;
+
+    padding: 85px 0;
+    margin-bottom: 60px;
+}
+
+.sedona-name {
+    width: 458px;
+    height: 152px;
+    margin: 80px auto 120px;
+    background-image: url(../img/welcome.png);
+    background-position: 0 -100px;
+    opacity: 0.75;
+}
+
+h1, .photo-title {
+    font-size: 28px;
+    line-height: 30px;
+    font-weight: 700;
+    color: #000;
+}
+
+article {
+    border-bottom: solid 2px #e5e5e5;  
+}
+
+article p {
+    text-transform: none;
+    font-size: 21px;
+    line-height: 30px;
+    text-align: left;
+    text-indent: 40px; 
+    padding: 10px 40px 10px;
+}
+
+article img {
+    width: 1200px;
+    margin: 20px auto;
+}
+
+.video {
+    width: 1200px;
+    height: 675px;
+    margin: 40px auto 100px;
+}
+
+/* styles for photo */
+
+.slider {
+    position: relative; 
+    text-align: center; 
+    width: 1200px; 
+    height: 675px;
+    margin-bottom: 60px;
+}
+
+.img-style {
+    width: 1200px;
+    height: 675px;
+    margin: 0 auto;
+}
+
+.img-style.hidden {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -600px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    z-index: -1000;
+}
+
+.cover-photo {
+    position: absolute;
+    top: 618px;
+    left: 50%;
+    margin-left: -600px;
+    z-index: 2000;
+    width: 1200px;
+    height: 57px;
+    background-image: url(../img/bg-poster-mask.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+
+.sedona-name-photo {
+    position: absolute;
+    top: 180px;
+    left: 50%;
+    margin-left: -229px;
+    z-index: 2000;
+    width: 458px;
+    height: 152px;
+    background-image: url(../img/welcome.png);
+    background-repeat: no-repeat;
+    background-position: 0 -100px;
+    opacity: 0.75;
+}
+
+figure {
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.previews {
+    font-size: 0;
+    margin-bottom: 80px;
+}
+
+.previews figure {
+    display: inline-block;
+    width: 33.33%;
+    height: auto;
+}
+
+figcaption {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    font-size: 14px;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.3);
+    color: #FFF;
+}
+
+figcaption span {
+    display: block;
+    text-transform: none;
+}
+
+.likes {
+    position: absolute;
+    top: 50%; /* прикрепить к верху родителя */
+    margin-top: -11px;
+    height: 12px;
+    padding: 5px 15px 5px 32px;
+    background-image: url(../img/icon-like.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    right: 0;
+}
+
+.video-2 {
+    width: 800px;
+    height: 450px;
+    margin: 50px auto 60px;
+}
+
+.photo-main {
+    border-bottom: solid 2px #e5e5e5;  
+}
+
+
+/* styles for panorams */
+
+
+.cover-panorams {
+    background-color: #81b3d2;
+    background-image: url(../img/bg-poster-mask.png), url(../img/milky_way_panorama_sedona.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom, center;
+
+    padding: 95px 0;
+    margin-bottom: 60px;
+}
+
+p.information {
+    position: relative;
+    text-transform: none;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+    text-indent: 40px; 
+    padding: 20px 120px 20px 160px;
+}
+
+p.information:before {
+    content: "";
+    position: absolute;
+    top: 26px;
+    left: 60px;
+    display: block;
+    width: 60px;
+    height: 60px;
+    background-image: url(../img/information-icon.png);
+    background-repeat: no-repeat;
+}
+
+
+figure.panorams {
+    padding: 0 40px;
+    margin-bottom: 80px;
+    text-transform: none;
+}
+
+figcaption.display  {
+    margin: 0 40px;
+    font-size: 16px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+///
