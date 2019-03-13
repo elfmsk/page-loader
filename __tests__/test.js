@@ -4,6 +4,8 @@ import os from 'os';
 import { promises as fs } from 'fs';
 import downloadFiles from '../src';
 
+const fsExtra = require('fs-extra');
+
 const pathToBaseFile = path.resolve(__dirname, '__fixtures__/sitesedona-github-io.html');
 const pathToLogoPng = path.resolve(__dirname, '__fixtures__/sitesedona-github-io_files/logo.png');
 const pathToMainCss = path.resolve(__dirname, '__fixtures__/sitesedona-github-io_files/main.css');
@@ -66,4 +68,8 @@ it('downloadWelcomePng', async () => {
   const expected = await fs.readFile(pathToWelcomePng, 'utf8');
   const result = await fs.readFile(`${timeDir}/sitesedona-github-io_files/welcome.png`, 'utf8');
   expect(expected).toEqual(result);
+});
+
+afterAll(async () => {
+  await fsExtra.remove(timeDir);
 });

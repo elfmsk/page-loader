@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
 import commander from 'commander';
-import downloadFiles from '..';
+import downloadPage from '..';
 import { version } from '../../package.json';
 
 commander
   .version(version, '-v, --version')
   .arguments('<url>')
   .description('third project from Hexlet')
-  .option('-o, --output [dir]', 'Output dir', process.cwd())
+  .option('-o, --output [dir]', 'output directory (default is current)', process.cwd())
   .action((url) => {
-    downloadFiles(url, commander.output);
+    downloadPage(url, commander.output);
   })
   .parse(process.argv);
