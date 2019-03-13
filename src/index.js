@@ -10,8 +10,7 @@ import { findResources, changeHtml } from './processesForHtml';
 
 const downloadFile = (urlLoc, pathForFile) => axios.get(urlLoc)
   .then(response => fs.writeFile(pathForFile, response.data, 'utf8'))
-  .then(() => fs.readFile(pathForFile, 'utf-8'))
-  .then(data => data);
+  .then(() => fs.readFile(pathForFile, 'utf-8'));
 
 const downloadResources = (urlLoc, resources, pathForResources) => {
   const urlAndResourceName = _.keys(resources).filter(n => resources[n].length !== 0)
@@ -29,10 +28,13 @@ const downloadResources = (urlLoc, resources, pathForResources) => {
     .then(() => Promise.all(promises));
 };
 
+const makeName = (urlLoc, extension) => `${_.kebabCase(urlLoc.split('//').slice(1)
+  .join(''))}${extension}`;
+
 const downloadPage = (urlLoc, pathBase) => {
-  const fileName = `${_.kebabCase(urlLoc.split('//').slice(1).join(''))}.html`;
+  const fileName = makeName(urlLoc, '.html');
   const pathForFile = path.resolve(pathBase, fileName);
-  const dirName = `${_.kebabCase(urlLoc.split('//').slice(1).join(''))}_files`;
+  const dirName = makeName(urlLoc, '_files');
   const pathForResources = path.resolve(pathBase, dirName);
   let newHtml;
   downloadFile(urlLoc, pathForFile)
