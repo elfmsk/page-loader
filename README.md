@@ -10,3 +10,5 @@
 $ sudo npm install -g elfmsk-third-project
 ```
 # project-lvl3-s418
+
+[![asciicast](https://asciinema.org/a/fEHGG4B6WvRArhTSMRf6Uis4W.svg)](https://asciinema.org/a/fEHGG4B6WvRArhTSMRf6Uis4W)

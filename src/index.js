@@ -1,16 +1,19 @@
 import path from 'path';
 import axios from 'axios';
-// import cheerio from 'cheerio';
-// import url from 'url';
+import debug from 'debug';
 import { promises as fs } from 'fs';
 import _ from 'lodash/fp';
-
 import { findResources, changeHtml } from './processesForHtml';
 
+const logInfo = debug('page-loader:info');
+const logRequest = debug('page-loader:request');
 
-const downloadFile = (urlLoc, pathForFile) => axios.get(urlLoc)
-  .then(response => fs.writeFile(pathForFile, response.data, 'utf8'))
-  .then(() => fs.readFile(pathForFile, 'utf-8'));
+const downloadFile = (urlLoc, pathForFile) => {
+  logRequest('Requesting', urlLoc);
+  return axios.get(urlLoc)
+    .then(response => fs.writeFile(pathForFile, response.data, 'utf8'))
+    .then(() => fs.readFile(pathForFile, 'utf-8'));
+};
 
 const downloadResources = (urlLoc, resources, pathForResources) => {
   const urlAndResourceName = _.keys(resources).filter(n => resources[n].length !== 0)
@@ -39,11 +42,15 @@ const downloadPage = (urlLoc, pathBase) => {
   let newHtml;
   downloadFile(urlLoc, pathForFile)
     .then((html) => {
+      logInfo('findResources');
       newHtml = changeHtml(html, dirName);
       return findResources(html);
     })
     .then(resources => downloadResources(urlLoc, resources, pathForResources))
-    .then(() => fs.writeFile(pathForFile, newHtml, 'utf8'));
+    .then(() => {
+      logInfo('changeHtml');
+      return fs.writeFile(pathForFile, newHtml, 'utf8');
+    });
 };
 
 export default downloadPage;

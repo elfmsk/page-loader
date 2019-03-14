@@ -1,6 +1,6 @@
 {
   "name": "elfmsk-third-project",
-  "version": "0.0.11",
+  "version": "0.1.2",
   "description": "third project from hexlet",
   "main": "index.js",
   "bin": {
@@ -34,6 +34,7 @@
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
     "commander": "^2.19.0",
+    "debug": "^4.1.1",
     "fs-extra": "^7.0.1",
     "gulp": "^4.0.0",
     "lodash": "^4.17.11",
@@ -49,7 +50,6 @@
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
-    "debug": "^4.1.1",
     "eslint": "^5.8.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-babel": "^5.2.1",

@@ -10,6 +10,6 @@ commander
   .description('third project from Hexlet')
   .option('-o, --output [dir]', 'output directory (default is current)', process.cwd())
   .action(url => downloadPage(url, commander.output)
-    .then(() => `Page loaded in ${commander.output}`)
+    .then(() => console.log(`Page loaded in ${commander.output}`))
     .catch(console.log))
   .parse(process.argv);
