@@ -5,6 +5,7 @@ import { promises as fs } from 'fs';
 import downloadFiles from '../src';
 
 const pathToBaseFile = path.resolve(__dirname, '__fixtures__/sitesedona-github-io.html');
+const pathToBaseFileCheange = path.resolve(__dirname, '__fixtures__/sitesedona-github-io-cheange.html');
 const pathToLogoPng = path.resolve(__dirname, '__fixtures__/sitesedona-github-io_files/logo.png');
 const pathToMainCss = path.resolve(__dirname, '__fixtures__/sitesedona-github-io_files/main.css');
 const pathToMapPng = path.resolve(__dirname, '__fixtures__/sitesedona-github-io_files/map.png');
@@ -38,7 +39,7 @@ beforeAll(async () => {
 });
 
 it('downloadBase', async () => {
-  const expected = await fs.readFile(pathToBaseFile, 'utf8');
+  const expected = await fs.readFile(pathToBaseFileCheange, 'utf8');
   const result = await fs.readFile(`${timeDir}/sitesedona-github-io.html`, 'utf8');
   expect(expected).toEqual(result);
 });
@@ -66,4 +67,26 @@ it('downloadWelcomePng', async () => {
   const expected = await fs.readFile(pathToWelcomePng, 'utf8');
   const result = await fs.readFile(`${timeDir}/sitesedona-github-io_files/welcome.png`, 'utf8');
   expect(expected).toEqual(result);
+});
+
+it('HTTPstatus404', async () => {
+  nock('https://sitesedona.github.io')
+    .get('/')
+    .reply(404);
+
+  await expect(downloadFiles('https://sitesedona.github.io', timeDir)).rejects.toThrowErrorMatchingSnapshot();
+});
+it('ResourceHTTPstatus404', async () => {
+  nock('https://sitesedona.github.io')
+    .get('/css/main.css')
+    .reply(404);
+
+  await expect(downloadFiles('https://sitesedona.github.io', timeDir)).rejects.toThrowErrorMatchingSnapshot();
+});
+it('fakepath', async () => {
+  nock('https://sitesedona.github.io')
+    .get('/')
+    .reply(200);
+
+  await expect(downloadFiles('https://sitesedona.github.io', '/fakepath/pinocchio')).rejects.toThrowErrorMatchingSnapshot();
 });

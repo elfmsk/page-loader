@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HTTPstatus404 1`] = `"Request failed with status code 404"`;
+
+exports[`ResourceHTTPstatus404 1`] = `
+"Nock: No match for request {
+  \\"method\\": \\"get\\",
+  \\"url\\": \\"https://sitesedona.github.io/\\",
+  \\"headers\\": {
+    \\"accept\\": \\"application/json, text/plain, */*\\",
+    \\"user-agent\\": \\"axios/0.18.0\\"
+  }
+}"
+`;
+
+exports[`fakepath 1`] = `"ENOENT: no such file or directory, open '/fakepath/pinocchio/sitesedona-github-io.html'"`;

@@ -40,7 +40,8 @@ const downloadPage = (urlLoc, pathBase) => {
   const dirName = makeName(urlLoc, '_files');
   const pathForResources = path.resolve(pathBase, dirName);
   let newHtml;
-  downloadFile(urlLoc, pathForFile)
+
+  return downloadFile(urlLoc, pathForFile)
     .then((html) => {
       logInfo('findResources');
       newHtml = changeHtml(html, dirName);
@@ -49,7 +50,7 @@ const downloadPage = (urlLoc, pathBase) => {
     .then(resources => downloadResources(urlLoc, resources, pathForResources))
     .then(() => {
       logInfo('changeHtml');
-      return fs.writeFile(pathForFile, newHtml, 'utf8');
+      fs.writeFile(pathForFile, newHtml, 'utf8');
     });
 };
 
