@@ -4,6 +4,8 @@ import os from 'os';
 import { promises as fs } from 'fs';
 import downloadFiles from '../src';
 
+const fsExtra = require('fs-extra');
+
 const pathToBaseFile = path.resolve(__dirname, '__fixtures__/sitesedona-github-io.html');
 const pathToBaseFileCheange = path.resolve(__dirname, '__fixtures__/sitesedona-github-io-cheange.html');
 const pathToLogoPng = path.resolve(__dirname, '__fixtures__/sitesedona-github-io_files/logo.png');
@@ -89,4 +91,8 @@ it('fakepath', async () => {
     .reply(200);
 
   await expect(downloadFiles('https://sitesedona.github.io', '/fakepath/pinocchio')).rejects.toThrowErrorMatchingSnapshot();
+});
+
+afterAll(async () => {
+  await fsExtra.remove(timeDir);
 });
