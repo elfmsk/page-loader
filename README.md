@@ -4,11 +4,22 @@
 
 [![Build Status](https://travis-ci.org/elfmsk/project-lvl3-s418.svg?branch=master)](https://travis-ci.org/elfmsk/project-lvl3-s418)
 
+# Page-Loader
+Downloads a web-page and saves it to output dir.
+
 ## Setup
 
 ```sh
 $ sudo npm install -g elfmsk-third-project
 ```
-# project-lvl3-s418
+## Usage
 
-[![asciicast](https://asciinema.org/a/fEHGG4B6WvRArhTSMRf6Uis4W.svg)](https://asciinema.org/a/fEHGG4B6WvRArhTSMRf6Uis4W)
+```
+page-loader [options] <url>
+
+Options:
+  --output [dir]  output directory (default is current)
+  -h, --help      output usage information
+```
+
+[![asciicast](https://asciinema.org/a/cuCcAM655R4QnJ1hhdgCrH4vk.svg)](https://asciinema.org/a/cuCcAM655R4QnJ1hhdgCrH4vk)

@@ -1,9 +1,11 @@
 import path from 'path';
 import axios from 'axios';
 import debug from 'debug';
+import Listr from 'listr';
 import { promises as fs } from 'fs';
 import _ from 'lodash/fp';
 import { findResources, changeHtml } from './processesForHtml';
+
 
 const logInfo = debug('page-loader:info');
 const logRequest = debug('page-loader:request');
@@ -24,11 +26,17 @@ const downloadResources = (urlLoc, resources, pathForResources) => {
           resourceName: path.resolve(pathForResources, tail.split('/').splice(-1).join('')),
         }
       ))], []);
-  const promises = urlAndResourceName
-    .map(actualUrl => downloadFile(actualUrl.urlPath, actualUrl.resourceName));
+
+  const resourcesTasks = urlAndResourceName
+    .map(urlAndResName => ({
+      title: urlAndResName.urlPath,
+      task: () => downloadFile(urlAndResName.urlPath, urlAndResName.resourceName),
+    }));
+
+  const tasks = new Listr(resourcesTasks);
 
   return fs.mkdir(pathForResources)
-    .then(() => Promise.all(promises));
+    .then(() => tasks.run());
 };
 
 const makeName = (urlLoc, extension) => `${_.kebabCase(urlLoc.split('//').slice(1)
