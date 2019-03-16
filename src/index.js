@@ -33,7 +33,7 @@ const downloadResources = (urlLoc, resources, pathForResources) => {
       task: () => downloadFile(urlAndResName.urlPath, urlAndResName.resourceName),
     }));
 
-  const tasks = new Listr(resourcesTasks);
+  const tasks = new Listr(resourcesTasks, { concurrent: true, exitOnError: false });
 
   return fs.mkdir(pathForResources)
     .then(() => tasks.run());
@@ -58,7 +58,7 @@ const downloadPage = (urlLoc, pathBase) => {
     .then(resources => downloadResources(urlLoc, resources, pathForResources))
     .then(() => {
       logInfo('changeHtml');
-      fs.writeFile(pathForFile, newHtml, 'utf8');
+      return fs.writeFile(pathForFile, newHtml, 'utf8');
     });
 };
 

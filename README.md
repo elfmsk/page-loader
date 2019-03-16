@@ -22,4 +22,4 @@ Options:
   -h, --help      output usage information
 ```
 
-[![asciicast](https://asciinema.org/a/cuCcAM655R4QnJ1hhdgCrH4vk.svg)](https://asciinema.org/a/cuCcAM655R4QnJ1hhdgCrH4vk)
+[![asciicast](https://asciinema.org/a/tYnP1YhFOraiNi2V4TPXRtQPF.svg)](https://asciinema.org/a/tYnP1YhFOraiNi2V4TPXRtQPF)
